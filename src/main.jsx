@@ -6,12 +6,14 @@ import MainLayout from "./Layout/MainLayout";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
+import { HelmetProvider } from "react-helmet-async";
+import AuthProvider from "./AuthProvider/AuthProvider";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    children:[
+    children: [
       {
         path: '/',
         element: <Home></Home>,
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );
