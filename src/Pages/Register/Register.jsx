@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMail } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BsFillPersonFill, BsFillFileImageFill } from 'react-icons/bs';
@@ -19,13 +19,16 @@ const Register = () => {
 
     let [showPassword, setShowPassword] = useState(false);
     let { createUser, updateUserProfile } = useContext(AuthContext);
+    let goto = useNavigate();
 
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const onSubmit = (data) => {
         createUser(data?.email, data?.password)
             .then(() => {
                 updateUserProfile(data?.name, data?.img)
-                    .then(() => { })
+                    .then(() => { 
+                        goto('/');
+                    })
                     .catch(err => {
                         console.log(err)
                     })
