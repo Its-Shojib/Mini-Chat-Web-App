@@ -1,6 +1,8 @@
 import { BsCameraVideoFill } from "react-icons/bs";
 import { IoIosPersonAdd } from "react-icons/io";
 import { CiCircleMore } from "react-icons/ci";
+import Messages from "./Messages";
+import Input from "./Input";
 const Chat = () => {
     return (
         <div className="">
@@ -12,6 +14,9 @@ const Chat = () => {
                     <CiCircleMore className='text-2xl' />
                 </div>
             </div>
+            <Messages />
+            <Input />
+
         </div>
     )
 }
